@@ -1,21 +1,21 @@
 import bcryptjs from 'bcryptjs'
 import UserModel from '../models/UserModel.js'
+import { errorHandler } from '../utils/error.js'
 
-const signUp = async (req, res) => {
+const signUp = async (req, res, next) => {
     const {username, email, password} = req.body
 
     const hashedPassword = await bcryptjs.hashSync(password, 10)
 
     if(!username || !email || !password) {
-        return res.status(400).json({ msg: 'Please fill out this form' })
+        next(errorHandler(400, 'All fields are required'))
     }
 
     try {
         const newUser = await UserModel.create(req.body)
         res.status(201).json({ newUser: {username, email, password: hashedPassword} })
     } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.message })
+        next(error)
     }
 }
 
