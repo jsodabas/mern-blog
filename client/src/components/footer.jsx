@@ -1,6 +1,6 @@
 import { Footer } from 'flowbite-react'
 import { Link } from 'react-router-dom'
-import {FaFacebook, FaGithub, FaLinkedin, FaYoutube} from 'react-icons/fa'
+import {FaGithub, FaLinkedin, FaYoutube} from 'react-icons/fa'
 
 const footer = () => {
   return (

@@ -2,6 +2,7 @@ import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 dotenv.config()
+import cors from 'cors'
 import { StatusCodes } from 'http-status-codes'
 import UserRoutes from './routes/UserRoutes.js'
 import AuthRoutes from './routes/AuthRoutes.js'
@@ -9,6 +10,7 @@ import AuthRoutes from './routes/AuthRoutes.js'
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 app.use('/api/user', UserRoutes)
 app.use('/api/auth', AuthRoutes)
