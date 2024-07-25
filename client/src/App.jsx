@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp'
 import Dashboard from './pages/Dashboard'
 import Projects from './pages/Projects'
 import Footer from './components/footer'
+import Error from './pages/Error'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/projects' element={<Projects />} />
+        <Route path='*' element={<Error />} />
       </Routes>
       <Footer />
     </BrowserRouter>
